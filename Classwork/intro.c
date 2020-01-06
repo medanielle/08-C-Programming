@@ -201,6 +201,20 @@ int lab1(){
     return 0;
 }
 
+int hw1(){
+    int num, years, weeks, days;
+
+    printf("Enter number of days: ");
+    scanf("%d", num);
+
+    years = num/365;
+    num = num - (years*365);
+    weeks = num/7;
+    days = num - (weeks * 7);
+
+    printf("%d years, %d weeks, %d days", years, weeks, days);
+    return 0;
+}
 
 int main()
 {
@@ -211,6 +225,7 @@ int main()
     //mileage();
     //size_ex();
     //declare();
-    lab1();
+    //lab1();
+    hw1();
     return 0;
 }
