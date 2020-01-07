@@ -1,4 +1,5 @@
-
+#include <stdio.h>
+#include <stdlib.h>
 // Performance Labs
 
 /*
@@ -13,7 +14,13 @@ Product of the above two integers = 375
 */
 
 int product(){
-    
+    int num1, num2;
+    printf("Enter first integer: ");
+    scanf("%d", &num1);
+    printf("Enter first integer: ");
+    scanf("%d", &num2);
+
+    printf("Product of the above two integers = %d ", num1 * num2);
 }
 
 
@@ -41,6 +48,24 @@ Salary = U$ 120000.00
 */
 
 
+// structure capable of holding remainer and quoitent 'div_t years, weeks'
+int salary(){
+    char empId[10];
+    float hrs, rate;
+
+    printf("Input the Employees ID(Max. 10 chars): ");
+    scanf("%s", &empId);
+    printf("\nInput the working hrs: ");
+    scanf("%f", &hrs);
+    printf("\nSalary amount/hr: ");
+    scanf("%f", &rate);
+
+    printf("\nEmployees ID = %s", empId);
+    printf("\nSalary = $ %.2f", hrs * rate);
+
+    return 0;
+}
+
 
 /*
 Write a C program that accepts three integers and find the maximum of three. 
@@ -53,8 +78,26 @@ Expected Output:
 Maximum value of three integers: 35
 ```
 */
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
+int max_value(){
+    int num1, num2, num3, maxVal;
 
+    printf("Input the first integer: ");
+    scanf("%d", &num1);
+
+    printf("Input the second integer: ");
+    scanf("%d", &num2);
+
+    printf("Input the third integer: ");
+    scanf("%d", &num3);
+
+    maxVal = MAX(num1, num2);
+    maxVal = MAX(maxVal, num3);
+
+    printf("Maximum value of three integers: %d", maxVal);
+    return 0; 
+}
 
 /*
 Write a program that computes the volume of a sphere with a 10-meter radius, using teh formula v=4/3(Pi)r3. Write the fraction 4/3 as 4.0f/3.0f.(Try writing it as 4/3. What happens?) Hint: C doesn't have an exponentiation operator, so you'll need to multiply r by itself twice to compute r3.
@@ -117,6 +160,92 @@ Tolls per day.
 
 int main()
 {
+    //product();
+    //salary();
+    max_value();
     return 0;
 }
 
+/********************************************************/
+/* 
+ * C program to find maximum and minimum between two numbers or more numbers using functions
+ */
+
+#include <stdio.h>
+#include <limits.h>
+#include <stdarg.h>
+
+
+/* Function declarations 
+int max(int args, ...);
+int min(int args, ...);
+*/
+
+/* MIAN FUNC
+int main() 
+{   
+    /*
+     * Demonstrate the use of variable argument list
+    
+    printf("Maximum of three numbers: (10, 30, 20) = %d\n", max(3, 10, 30, 20));
+    printf("Maximum of five numbers: (5, -45, 4, 60, 100) = %d\n", max(5, -45, 4, 60, 100));
+    
+    printf("Minimum of four numbers: (-5, 0, 10, 50) = %d\n", min(4, -5, 0, 10, 50));
+    printf("Minimum of two numbers: (10, 20) = %d", min(2, 10, 20));
+    
+    return 0;
+}
+
+
+/**
+ * Find maximum between two or more integer variables
+ * @param args Total number of integers
+ * @param ... List of integer variables to find maximum
+ * @return Maximum among all integers passed
+
+int maxs(int args, ...)
+{
+    int i, max, cur;
+    va_list valist;
+    va_start(valist, args);
+    
+    max = INT_MIN;
+    
+    for(i=0; i<args; i++)
+    {
+        cur = va_arg(valist, int); // Get next elements in the list
+        if(max < cur)
+            max = cur;
+    }
+    
+    va_end(valist); // Clean memory assigned by valist
+    
+    return max;
+}
+
+/**
+ * Find minimum between two or more integer variables
+ * @param args Total number of integers
+ * @param ... List of integer variables to find minimum
+ * @return Minimum among all integers passed
+
+int mins(int args, ...) 
+{
+    int i, min, cur;
+    va_list valist;
+    va_start(valist, args);
+    
+    min = INT_MAX;
+    
+    for(i=0; i<args; i++)
+    {
+        cur = va_arg(valist, int);
+        if(min > cur)
+            min = cur;
+    }
+    
+    va_end(valist);
+    
+    return min;
+}
+*/

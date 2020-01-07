@@ -7,7 +7,7 @@ int kms(){
     return 0;
 }
 
-int  fuck_joe(int argc, char **argv){
+int ignore(int argc, char **argv){
 
     int a;
     double x;
