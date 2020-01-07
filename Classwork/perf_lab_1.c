@@ -12,6 +12,9 @@ Product of the above two integers = 375
 ```
 */
 
+int product(){
+    
+}
 
 
 /*
@@ -112,5 +115,8 @@ Tolls per day.
 
 
 
-
+int main()
+{
+    return 0;
+}
 
