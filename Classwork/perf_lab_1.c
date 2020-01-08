@@ -100,11 +100,26 @@ int max_value(){
 }
 
 /*
-Write a program that computes the volume of a sphere with a 10-meter radius, using teh formula v=4/3(Pi)r3. Write the fraction 4/3 as 4.0f/3.0f.(Try writing it as 4/3. What happens?) Hint: C doesn't have an exponentiation operator, so you'll need to multiply r by itself twice to compute r3.
+Write a program that computes the volume of a sphere with a 10-meter radius, using the formula v=4/3(Pi)r3. Write the fraction 4/3 as 4.0f/3.0f.(Try writing it as 4/3. What happens?) Hint: C doesn't have an exponentiation operator, so you'll need to multiply r by itself twice to compute r3.
 
 Modify the program of the above problem so that it prompts the user to enter the radius of the sphere.
 */
+#include <math.h>
+#define M_PI 3.14159265358979323846
 
+int sphere(){
+    float radius, volume;
+    //printf("%.20lf\n", M_PI);
+
+    printf("Enter a radius: ");
+    scanf("%f", &radius);
+
+    volume = (4.0/3) * M_PI * radius * radius * radius;
+    printf("The volume of a sphere (with radius %.2f) is %.2f", radius, volume);
+
+    //    surface_area =  4 * M_PI * radius * radius;
+    //    printf("Surface area of sphere is: %.3f", surface_area);
+}
 
 /*
 Write a program that asks the user to enter a dollars-and-cents amount, then displays the amount with 5% tax added:
@@ -112,7 +127,19 @@ Write a program that asks the user to enter a dollars-and-cents amount, then dis
 Enter an amount: 100.00
 With tax added: $105.00
 */
+#include<math.h>
 
+int my_taxes(){
+    float amt = 0.00, tax, ans;
+    printf("Enter an amount: ");
+    scanf("%f", &amt);
+    amt = round(amt * 100)/100;
+    tax = amt * 0.05;
+    ans = round((amt+tax) * 100)/100;
+    printf("With tax added: $%.2f", ans);
+
+    return 0;
+}
 
 
 /*
@@ -127,8 +154,23 @@ $1  bills: 3
 ```
 Hint: divide the amount by 20 to determine the number of $20 bills needed, and then reduce the amount by the total value of the $20 bills. Repeat for the other bill sizes. Be sure to use integer values throughout, not floating-point numbers. 
 */
+int bills(){
+    int num, twenty, tens, fives, ones;
+
+    printf("Enter amount: ");
+    scanf("%d", &num);
+
+    twenty = num/20;
+    num = num - (twenty * 20);
+    tens = num/10;
+    num = num - (tens * 10);
+    fives = num/5;
+    ones = num - (fives * 5);
 
 
+    printf("%d - $20s, %d - $10s, %d - $5s, %d - $1s\n", twenty, tens, fives, ones);
+    return 0;
+}
 
 /*
 Create a BMI calculator application that reads the user’s weight in pounds and height in inches (or, if you prefer, the user’s weight in kilograms and height in meters), then calculates and displays the user’s body mass index. Also, the application should display the following information from the Department of Health and Human Services/National Institutes of Health so the user can evaluate his/her BMI:
@@ -162,7 +204,10 @@ int main()
 {
     //product();
     //salary();
-    max_value();
+    //max_value();
+    //sphere();
+    //my_taxes();
+    bills();
     return 0;
 }
 
