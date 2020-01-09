@@ -168,7 +168,7 @@ int bills(){
     ones = num - (fives * 5);
 
 
-    printf("%d - $20s, %d - $10s, %d - $5s, %d - $1s\n", twenty, tens, fives, ones);
+    printf("%d - $20s, %d - $10s, %d - $5s, %d -$1s\n", twenty, tens, fives, ones);
     return 0;
 }
 
