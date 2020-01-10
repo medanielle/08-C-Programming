@@ -151,7 +151,7 @@ int assignment(){
     printf("x(%d) -= y++(%d)  =>  (%d) \n", x, y, x -= y++);     // => 9 - (3+1) = 5   ??????    x(9) -= y++(4)  =>  (6)
     x = 9; y = 3;
     printf("(y(%d) %%= y(%d)) || (x(%d) /= x--(%d))  =>  (%d) \n", y, y, x, x, (y %= y) || (x /= x--));        // Bonus
-    // (3 % 3 = 0) || (9 / (9-1) = 1)  = True
+    // (3 % 3 = 0) || (9 / (9-1) = 1)  =  True  ?????    False
 
         
 }
@@ -166,7 +166,6 @@ int assignment(){
         x != y != 3 >= x;          // Result 0
         2 != 6 != 3 >= 2
         1(true) >= 2  = False(0)
-
 
     //////// ASSIGNMENT OPERATOR QUIZ BONUS QUESTION ////////
         x = 9; y = 3;
@@ -200,7 +199,7 @@ int lab9()
     scanf("%lf", &a);
     printf("Enter side B: ");
     scanf("%lf", &b);
-    printf("Side A: %lf, Side B: %lf\n", a, b);
+    printf("Side A: %.2lf, Side B: %.2lf\n", a, b);
 
             /*
     Relational
@@ -213,17 +212,22 @@ int lab9()
 
     if (a > 0 && b > 0 && a ){
         c = sqrt((a*a)+(b*b));
-        printf("The hypontenus is %.2lf", c);
+        printf("The hypotenuse is %.2lf", c);
         }
+    else
+    {
+        printf("Not a valid triangle");
+    }
+    
     return 0;
 }
 int main()
 {
     //inc_decr();
     //arithmetic();
-    //lab9();
+    lab9();
     //relational();
     //logical();
-    assignment();
+    //assignment();
     return 0;
 }

@@ -175,17 +175,34 @@ int bills(){
 /*
 Create a BMI calculator application that reads the user’s weight in pounds and height in inches (or, if you prefer, the user’s weight in kilograms and height in meters), then calculates and displays the user’s body mass index. Also, the application should display the following information from the Department of Health and Human Services/National Institutes of Health so the user can evaluate his/her BMI:
 ```
-BMI VALUES
-Underweight: less than 18.5
-Normal:      between 18.5 and 24.9
-Overweight:  between 25 and 29.9
-Obese:       30 or greater
+######################################
+# BMI VALUES                         #
+# Underweight: less than 18.5        #
+# Normal:      between 18.5 and 24.9 #
+# Overweight:  between 25 and 29.9   #
+# Obese:       30 or greater         #
+######################################
 */
+int bmi()
+{
+    double w, h, num;
 
+    printf("Enter your weight in pounds: \n");
+    scanf("%lf", &w);
+    printf("Enter your height in inches: \n");
+    scanf("%lf", &h);
+
+    num = 703*w/(h*h);
+    printf("\t\t    Your BMI is %.1lf\n", num);
+    printf("\t######################################\n" "\t# BMI VALUES                         #\n" "\t# Underweight: less than 18.5        #\n" "\t# Normal:      between 18.5 and 24.9 #\n" "\t# Overweight:  between 25 and 29.9   #\n" "\t# Obese:       30 or greater         #\n" "\t######################################\n\n");
+
+}   
 
 
 /*
-Research several car-pooling websites. Create an application that calculates your daily driving cost, so that you can estimate how much money could be saved by car pooling, which also has other advantages such as reducing carbon emissions and reducing traffic congestion. The application should input the following information and display the user’s cost per day of driving to work:
+Research several car-pooling websites. 
+Create an application that calculates your daily driving cost, so that you can estimate how much money could be saved by car pooling, which also has other advantages such as reducing carbon emissions and reducing traffic congestion. 
+The application should input the following information and display the user’s cost per day of driving to work:
 
 Total miles driven per day.
 
@@ -198,6 +215,23 @@ Parking fees per day.
 Tolls per day.
 */
 
+int commute()
+{
+    float mpd, cpg, mpg, park, toll, cost=0;
+    printf("Enter total miles driven per day (mi): \n");
+    scanf("%f", &mpd);
+    printf("Enter cost per gallon of gasoline ($): \n");
+    scanf("%f", &cpg);
+    printf("Enter average miles per gallon: \n");
+    scanf("%f", &mpg);
+    printf("Enter parking fees per day ($): \n");
+    scanf("%f", &park);
+    printf("Enter tolls per day ($): \n");
+    scanf("%f", &toll);
+    cost = ((cpg*mpd)/mpg) + park + toll;
+    printf("Your Cost is: $%.2f", cost);
+}
+
 
 
 int main()
@@ -207,7 +241,9 @@ int main()
     //max_value();
     //sphere();
     //my_taxes();
-    bills();
+    //bills();
+    //bmi();
+    //commute();
     return 0;
 }
 
