@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 //#define PARTIAL_SUB
 
 #define COUNT 1

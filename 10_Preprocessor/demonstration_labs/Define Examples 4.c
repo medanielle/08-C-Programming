@@ -5,7 +5,7 @@
 //#define BAD_STATEMENTS
 
 #ifdef BAD_STATEMENTS
-#define DIE puts("Fatal Error"); exit(EXIT_FAILURE);
+//#define DIE puts("Fatal Error"); exit(EXIT_FAILURE);
 #endif
 
 #ifndef BAD_STATEMENTS

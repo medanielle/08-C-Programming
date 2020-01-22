@@ -1,0 +1,24 @@
+compiler (gcc):
+	- gcc --version; check the version of gcc installed (if installed), immediately exits the program once the version is displayed
+	- We quickly discussed that we will be using NASM with Visual Studio Community Edition on windows for assembly
+	- -g | adds debug symbols to output executable (enables debugging for the program)
+
+gdb:
+	- crash1.c from #classpractice  (issue 0 division error when x becomes 0)
+	- crash2.c from #classpractice  (issue out of index range for z array assignement)
+	- infloop.c from #classpractice (issue once y > 10, x is continuously added and subtracted by 1)
+	- wrong.c from #classpractice   (issue choice set to 1 in if statement '=' vs '==')
+    
+	- compile code with gcc -g
+	- call *.out file with gdb (i.e. gdb *.out)
+	- set breakpoint
+		break (line number)
+	- start the program
+		run (executes the code)
+	- check variable a variables value
+		display i
+	- layout next (displays the source code as you run in gdb)
+	- quit or q	(exit gdb)
+	- step or s	(moves to the next line in the code, if the next line is a function, steps into the function)
+	- next or n	(moves to the next line of code)
+	- clear	(line#)	(removes the breakpoint)

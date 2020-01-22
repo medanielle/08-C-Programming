@@ -239,7 +239,56 @@ int lab18(){
         * Immediately stop this process when the user inputs an integer above 999.
         * Ignore any "divide by 0" errors using *continue*.
     */
+    unsigned int x=1, i, count=0;
+    printf("Enter a number (1000+ to exit): ");
+    scanf("%d", &x);
+    while(x<1000)
+    {
+        for(i = 1; count < 15; i++){
+            //n++;
+            if(x % i == 0){
+                printf("%d is divisable by %d\n", x, i);
+                count += 1;
+            }
+            else if(i>x){
+                break;
+            }
+            else{
+                continue;
+            }
+        }
+        printf("Enter a number (1000+ to exit): ");
+        scanf("%d", &x);
+    }
     return 0;
+}
+
+int count_even_loop(){
+    int i;
+    printf("Even:\n");
+    for(i = 0; i < 101; i++){
+        if(i % 2 == 0){
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
+int count_odd_loop(){
+    int i;
+    printf("Odd:\n");
+    for(i = 0; i < 101; i++){
+        if(i % 2 != 0){
+            printf("%d\n", i);
+        }
+    }
+    return 0;
+}
+
+// This is an awesome function and useful if you need to clear the input buffer
+int clearInput()
+{
+    while ( getchar() != '\n' );
 }
 
 int lab19(){
@@ -255,6 +304,22 @@ int lab19(){
         * Ask the user to continue with a DO-WHILE loop
         * write a version with the counting loop written as a FOR loop, and a WHILE loop version.
     */
+    int x;
+    char cont;
+    do {
+        printf("Enter 0 for even and 1 for odds: \n");
+        scanf("%d", &x);
+        clearInput();
+        if(x == 0){
+            count_even_loop();
+        }
+        else{
+            count_odd_loop();
+        }
+        printf("Do you want to continue? (y/n)\n");
+        scanf("%c", &cont);
+    } while (tolower(cont) == 'y');
+    
     return 0;
 }
 
@@ -262,8 +327,10 @@ int main(){
     //lab11();
     //lab12();
     //lab13();
-    lab14();
+    //lab14();
     //lab16();
     //lab17();
+    //lab18();
+    lab19();
 }
 
