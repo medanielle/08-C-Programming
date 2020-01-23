@@ -41,7 +41,7 @@ int main(void)
 		puts("Something went wrong!");
 		return -1;
 	}
-
+	
 	if (mathFun_ptr)
 	{
 		returnValue = mathFun_ptr(num1, num2);
@@ -80,6 +80,7 @@ double divide(double firstNumber, double secondNumber)
 	}
 	else
 	{
+		printf("Eek! A ZERO!\n");
 		return ERROR_CODE;
 	}
 }
