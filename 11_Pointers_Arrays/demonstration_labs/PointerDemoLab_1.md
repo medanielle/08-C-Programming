@@ -195,8 +195,7 @@ The string after conversion is: CHARACTERS AND $32.98
 
 ## Program 3 Printing a string one character at a time using a non-constant pointer to constant data.
 ```c
-// Printing a string one character at a time using
-// a non-constant pointer to constant data.
+// Printing a string one character at a time using a non-constant pointer to constant data.
 
 #include <stdio.h>
 
@@ -310,8 +309,7 @@ int main( void )
 ```
 ## Program Applying sizeof to an array name returns the number of bytes in the array
 ```c
-// Applying sizeof to an array name returns 
-// the number of bytes in the array.
+// Applying sizeof to an array name returns the number of bytes in the array.
 #include <stdio.h>
 #define SIZE 20
 
@@ -400,8 +398,7 @@ int main( void )
    } // end for
 
    // output array b using array name and pointer/offset notation
-   puts( "\nPointer/offset notation where\n"
-         "the pointer is the array name" );
+   puts( "\nPointer/offset notation where\nthe pointer is the array name" );
 
    // loop through array b
    for ( offset = 0; offset < ARRAY_SIZE; ++offset ) {
