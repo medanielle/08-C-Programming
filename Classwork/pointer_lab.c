@@ -216,7 +216,58 @@ Expected Output :
 
 */
 
+#include <stdio.h> 
+#include <string.h> 
+  
+// Function to reverse the string using pointers 
+void reverseString(char* str) 
+{ 
+    int l, i; 
+    char *begin_ptr, *end_ptr, ch; 
+  
+    // Get the length of the string 
+    l = strlen(str); 
+    printf("Length = %d\n", l);
+  
+    // Set the begin_ptr and end_ptr initially to start of string 
+    begin_ptr = str; 
+    end_ptr = str; 
+  
+    // Move the end_ptr to the last character 
+    for (i = 0; i < l - 1; i++) {
+        
+        end_ptr++; 
+        //printf("end: %c, %p\n", *end_ptr, &*end_ptr);       //DEBUG
+    }
+    // Swap the char from start and end index using begin_ptr and end_ptr 
+    for (i = 0; i < l / 2; i++) { 
+        //printf("begin: %c, %p\tend: %c, %p\n", *begin_ptr, &*begin_ptr, *end_ptr, &*end_ptr);
+        // swap character 
+        ch = *end_ptr; 
+        *end_ptr = *begin_ptr; 
+        *begin_ptr = ch; 
+        //printf("begin: %c, %p\tend: %c %p\n-------------\n", *begin_ptr, &*begin_ptr, *end_ptr, &*end_ptr);
+  
+        // update pointers positions 
+        begin_ptr++; 
+        end_ptr--; 
+    } 
+} 
 
+int my_reverse() 
+{ 
+    // Get the string 
+    char str[100] = "0123456789"; 
+    printf("Enter a string: %s\n", str); 
+  
+    // Reverse the string 
+    reverseString(str); 
+  
+    // Print the result 
+    printf("Reverse of the string: %s\n", str); 
+  
+    return 0; 
+}
 
 /*
 
@@ -240,30 +291,41 @@ int rainfall(void)
         {7.2,9.9,8.4,3.3,1.2,0.8,0.4,0.0,0.6,1.7,4.3,6.2},
         {7.6,5.6,3.8,2.8,3.8,0.2,0.0,0.0,0.0,1.3,2.6,5.2}
     };
-    int year, month;
-    float subtot, total;
+    int year, month, i;
+    float subtot, total, subtot2, total2;
 
     printf(" YEAR    RAINFALL  (inches)\n");
-    for (year = 0, total = 0; year < YEARS; year++)
+    for (year = 0, total = 0, total2 = 0; year < YEARS; year++)
     {             // for each year, sum rainfall for each month
-        for (month = 0, subtot = 0; month < MONTHS; month++)
-            subtot += rain[year][month];
-        printf("%5d %15.1f\n", 2010 + year, subtot);
-        total += subtot; // total for all years
+        subtot2 = 0;
+        for (month = 0, subtot2 = 0; month < MONTHS; month++){  //subtot = 0
+            
+            //subtot += rain[year][month];
+            subtot2 += *(*(rain + year) + month);
+            // *(*(theDreamIsReal + 2) + 3) = 'e'         *(theDreamIsReal + 2) = 'Ellen'
+        }
+        //index method
+        //printf("%5d %15.1f\n", 2010 + year, subtot);
+        //total += subtot; // total for all years
+        total2 += subtot2;
+        printf("%5d %15.1f\n", 2010 + year, subtot2);
      }
-    printf("\nThe yearly average is %.1f inches.\n\n",
-            total/YEARS);
-    printf("MONTHLY AVERAGES:\n\n");
-    printf(" Jan  Feb  Mar  Apr  May  Jun  Jul  Aug  Sep  Oct ");
-    printf(" Nov  Dec\n");
+    //printf("\nThe yearly average is %.1f inches.\n\n", total/YEARS);
+    printf("\nThe yearly average is %.1f inches.\n\n", total2/YEARS);
+    printf("MONTHLY AVERAGES:\n");
+    printf(" Jan \t Feb \t Mar \t Apr \t May \t Jun \t Jul \t Aug \t Sep \t Oct \t Nov \t Dec\n");
 
     for (month = 0; month < MONTHS; month++)
     {             // for each month, sum rainfall over years
-        for (year = 0, subtot =0; year < YEARS; year++)
-            subtot += rain[year][month];
-        printf("%4.1f ", subtot/YEARS);
+        for (year = 0, subtot =0, subtot2 =0; year < YEARS; year++){
+            //subtot += rain[year][month];            
+            subtot2 += *(*(rain + year) + month);
+        }
+        //printf("subtot = %f \t subtot2 = %f\n", subtot, subtot2);
+        //printf("%4.1f ", subtot/YEARS);
+        printf("%4.1f\t", subtot2/YEARS);
     }
-    printf("\n");
+    printf("\n\n");
 
     return 0;
 }
@@ -281,10 +343,41 @@ Expected Output :
 ```
 
 */
+
+int * point_max(){
+    int num1, num2;
+    int * max;
+
+    printf("Input the first number : ");
+    scanf("%d", &num1);
+
+    printf("Input the first number : ");
+    scanf("%d", &num2);
+
+    printf("The two nums are %d, %d\n", num1, num2);
+    if (num1 >= num2)
+    {
+        printf("Num1\n");
+        *max = num1;
+        
+    }
+    else 
+    {
+        printf("num2\n");
+        *max = num2;
+        
+    }
+    return max;
+}
+
+
 int main(){
     //mem_op();
     //demo_point();
     //demo_small();
-    lab_string();
+    //lab_string();
+    //my_reverse();
+    //rainfall();
+    //printf("%d is the max", *point_max()) ;
     return 0;
 }
