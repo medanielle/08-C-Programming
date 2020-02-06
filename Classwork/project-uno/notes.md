@@ -56,12 +56,72 @@ int main(void)
 
 
 
-    Branches
+-- Adding Repo to VScode
+Ctr+Shift+P 
+type Git clone
+paste link to repo 
+it will download in bottom right
+then choose create a new workspace if necessary
 
 
-    $ git checkout -b iss53             //##  Switched to a new branch "iss53"
 
-    $ git merge master                  // if master is update since you create your branch
+-- Create branch for your issue
+click on master (in blue bar) on bottom left
+click 'create new branch from...'
+then enter your branch name (can be descriptive/ or based on issue number)
+make sure your are creating it from the master (normally)
+
+
+
+
+-- update your branch
+go to: source control on left (looks like three dots)
+click the + sign next to change to stage them (or go to the ... on project line and click stage all)
+then commit changes by clicking in the Message box below the project title 
+enter your message then hit enter to commit
+
+
+-- get updates from master (when your are behind and there were other people contributing)
+go to: source control on left (looks like three dots)
+go to the ... on project line and click 'Pull from ...'
+pop up bar will appear, select the repo (http://... team-omega_project.git)
+then select the origin/master (to pull updates from)
+**You may need to deal with merge conflicts if you are working in the same document.
+
+
+-- Merge request/merge your branch with master
+got to our github team-omega (https://github.com/Shady-Data/Team-Omega_project/)
+click on the "pull request" tab
+click create new pull request 
+the master should be the base, and you should chose your branch to compare
+"When thinking about branches, remember that the base branch is where changes should be applied, the head branch contains what you would like to be applied."
+
+You can see your changes on the bottom (red deletions/ green additions)
+then click create pull request (green buttpn towards the top)
+add 'closes ###' or 'resolves ###" with the issue number to close the issue that you fixed in the branch
+
+
+
+-- delete your branch(if we get too many)
+Ctrl+Shift+P Git: Delete Branch
+or in git hub.com
+
+
+
+
+
+
+
+
+
+________________________________________________________________________________________________________
+    
+
+    $ git clone http://....
+
+    $ git checkout -b iss53             //##  Switched to a new branch "iss53"  (-b creates a new branch)
+
+    $ git merge master                  // if master is updated since you create your branch
                                         // get updates made to master onto your branch to manage conflicts
 
     $ git checkout master               //  Switched to branch 'master'
