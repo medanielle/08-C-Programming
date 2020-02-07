@@ -170,8 +170,8 @@ int waves_ex()
     avg = sum/count;
     //printf("(sum)%f / (count) %d = (avg)%f", sum, count, avg);
     printf("Summary Information for Tsunamis\n");
-    printf("Maximum Wave height (in feet): %.2f \n", max);
-    printf("Average Wave height (in feet): %.2f \n", avg);
+    printf("Maximum Wave height (in feet): %.2f \n", max*3.281);
+    printf("Average Wave height (in feet): %.2f \n", avg*3.281);
     printf("Tsunamis with greater than the average heights: \n");
     for (int y = 0; y<sizeof(list)/sizeof(struct waves); y++)
     {
