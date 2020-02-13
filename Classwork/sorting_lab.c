@@ -117,7 +117,7 @@ Sorted array: 7 26 37 50 80 98
 #include<stdio.h> 
 
 // A utility function to swap two elements 
-void quick_swap(int* a, int* b) 
+void quick_swap1(int* a, int* b) 
 { 
 	int t = *a; 
 	*a = *b; 
@@ -127,7 +127,7 @@ void quick_swap(int* a, int* b)
 /* This function takes last element as pivot, places the pivot element at its correct position in sorted 
 	array, and places all smaller (smaller than pivot) to left of pivot and all greater elements to right 
 of pivot */
-int partition (int arr[], int low, int high) 
+int partition1(int arr[], int low, int high) 
 { 
 	int pivot = arr[high]; // pivot 
 	int i = (low - 1); // Index of smaller element 
@@ -138,10 +138,10 @@ int partition (int arr[], int low, int high)
 		if (arr[j] < pivot) 
 		{ 
 			i++; // increment index of smaller element 
-			quick_swap(&arr[i], &arr[j]); 
+			quick_swap1(&arr[i], &arr[j]); 
 		} 
 	} 
-	quick_swap(&arr[i + 1], &arr[high]); 
+	quick_swap1(&arr[i + 1], &arr[high]); 
 	return (i + 1); 
 } 
 
@@ -149,16 +149,16 @@ int partition (int arr[], int low, int high)
 arr[] --> Array to be sorted, 
 low --> Starting index, 
 high --> Ending index */
-void quickSort(int arr[], int low, int high) 
+void quickSort1(int arr[], int low, int high) 
 { 
 	if (low < high) 
 	{ 
 		/* pi is partitioning index, arr[p] is now at right place */
-		int pi = partition(arr, low, high); 
+		int pi = partition1(arr, low, high); 
 
 		// Separately sort elements before partition and after partition 
-		quickSort(arr, low, pi - 1); 
-		quickSort(arr, pi + 1, high); 
+		quickSort1(arr, low, pi - 1); 
+		quickSort1(arr, pi + 1, high); 
 	} 
 } 
 
@@ -181,7 +181,7 @@ int test_quick()
     printf("Unsorted Array: \n");
     printArray(arr, n);
     //sort
-	quickSort(arr, 0, n-1); 
+	quickSort1(arr, 0, n-1); 
     //print sorted
 	printf("Sorted array: \n"); 
 	printArray(arr, n); 
@@ -428,6 +428,166 @@ Total exchanges: 42
 */
 
 
+/*	Test driver for sorting solutions. 
+	   Written by: 90cos
+	   Date: 2018
+
+*/
+#include <stdio.h>
+#include <stdbool.h>
+#define CMAX 15
+
+// A utility function to swap two elements 
+void quick_swap(int* a, int* b) 
+{ 
+	int t = *a; 
+	*a = *b; 
+	*b = t; 
+} 
+
+/* This function takes last element as pivot, places the pivot element at its correct position in sorted 
+	array, and places all smaller (smaller than pivot) to left of pivot and all greater elements to right 
+of pivot */
+int partition (int arr[], int low, int high, int * count) 
+{ 
+	int pivot = arr[high]; // pivot 
+	int i = (low - 1); // Index of smaller element 
+
+	for (int j = low; j <= high- 1; j++) 
+	{ 
+		// If current element is smaller than the pivot 
+		if (arr[j] < pivot) 
+		{ 
+			i++; // increment index of smaller element 
+			quick_swap(&arr[i], &arr[j]); 
+            *count +=3;
+            printf("If: Count: %d \t Array: ", *count);
+            printArray(arr, CMAX);
+		} 
+	} 
+	quick_swap(&arr[i + 1], &arr[high]); 
+    *count += 3;
+    printf("For: Count: %d \t Array: ", *count);
+    printArray(arr, CMAX);
+	return (i + 1); 
+} 
+
+/* The main function that implements QuickSort 
+arr[] --> Array to be sorted, 
+low --> Starting index, 
+high --> Ending index */
+int * quickSort(int arr[], int low, int high, int * count) 
+{ 
+	if (low < high) 
+	{ 
+		/* pi is partitioning index, arr[p] is now at right place */
+		int pi = partition(arr, low, high, count); 
+
+		// Separately sort elements before partition and after partition 
+		quickSort(arr, low, pi - 1, count); 
+		quickSort(arr, pi + 1, high, count); 
+	} 
+    return count;
+}
+
+/*	================== quickSort =====================
+	Array  data[left..right] sorted using recursion.
+	   Pre    data is array to be sorted
+	          left identifies first element in data
+	          right identifies last element in data
+	          count is exchange accumulator 
+	   Post   array sorted
+
+/*	Prototype Declarations 
+void quickSort      (int *data,     int left, int right, int* count);
+void quickInsertion (int* sortData, int  first, 
+                     int  last,     int* count);
+void medianLeft     (int* sortData, int  left,
+                     int  right,    int* count);
+	*/
+int fix_quick ( void ) 
+{
+/*	Local Declarations */
+	int countExch;
+	int	ary[CMAX] = {89, 72, 3, 15, 21, 57, 61, 44, 19, 98, 5, 77, 39, 59, 61};
+
+/*	Statements */
+	printf( "Unsorted array: ");
+	for (int i = 0; i < CMAX; i++ )
+		printf( "%3d", ary[ i ] );	
+    printf("\n");
+
+	countExch = 0;
+    quickSort (ary, 0, CMAX-1, &countExch);
+	
+	printf( "\nSorted array:   " );
+	for (int i = 0; i < CMAX; i++)
+		printf( "%3d", ary[ i ] );
+	printf( "\n" );
+	
+	printf("Total exchanges: %d\n", countExch);
+	return 0;
+}	/* main */
+
+
+/*	================== quickSort =====================
+	Array  data[left..right] sorted using recursion.
+	   Pre    data is array to be sorted
+	          left identifies first element in data
+	          right identifies last element in data
+	          count is exchange accumulator 
+	   Post   array sorted
+
+void quickSort (int *data, int left, int right, int* count)
+{
+//// inser code here //////**********************************************************
+	return;
+}	// end quickSort
+
+/*	================== quickInsertion ================== 
+	Sort list[first...last] using insertion sort. The 
+	list is divided into sorted and unsorted lists. With 
+	each pass, first element in the unsorted list is 
+	inserted into the sorted list using a variation 
+	of insertion sort modified for use in quick sort.
+	   Pre      list must contain at least one element
+	            first is index to first element 
+	            last is index to last element
+	            count holds the number of exchanges
+	   Post     list rearranged.
+
+void quickInsertion (int* sortData, int  first, 
+                     int  last,     int* count)
+
+{
+///// insert code here /////*******************************************************************
+	return;
+}	// end quickInsertion
+
+/*	=================== medianLeft ==================== 
+	Find median value in array, sortData[left..right], 
+	and place it in the location sortData[left].
+	   Pre    sortData is array of at least 3 elements
+	          left and right are boundaries of the array
+	   Post   median value  placed at sortData[left 
+	          count holds the number of exchanges
+
+void medianLeft (int* sortData, int  left,
+                 int  right,    int* count)
+{
+///// insert code here //////***************************************************************
+	return;
+}	// medianLeft
+*/
+
+
+/*
+Results:
+Unsorted array:  89 72  3 15 21 57 61 44 19 98  5 77 39 59 61
+Sorted array:     2  3  5 15 19 21 39 44 57 59 61 61 72 77 89
+Total exchanges: 52
+*/
+
 int main()
 {
     // bubble();
@@ -436,5 +596,6 @@ int main()
     // test_quick();
     // fix_insert();
     // fix_select();
+    fix_quick();
     return 0;
 }
