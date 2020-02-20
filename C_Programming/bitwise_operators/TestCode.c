@@ -28,7 +28,38 @@ a -2.
 #include <math.h>
 #include "TestCode.h"
 
+int bin_to_int(char * s){
+	char* start = s;
+	int total = 0;
+	while (*start)
+	{
+ 	total *= 2;
+ 	if (*start++ == '1') total += 1;
+	}
+	return total;
+}
+
+int check_length(char * s){
+    int c = 0;
+    while (*s){
+      c++;
+      *s++;
+   }
+   printf("Count = %d\n", c);
+   return c;
+}
+
 int bitwiseOps(char *first, char* second)
 {
+   if (check_length(first)!= 16 || check_length(second) != 16){
+      printf("too long/short!\n");
+      return -1;
+   }
+   int f_num = bin_to_int(first);
+   int s_num = bin_to_int(second);
 	return 0;
+}
+
+int main(){
+   bitwiseOps("0101", "1010")
 }

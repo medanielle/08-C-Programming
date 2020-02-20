@@ -1,25 +1,7 @@
 
 #include <stdio.h>
 
-int BSearch(int arr[], int left, int right, int target)
-{
-    int middle;
-    while (left <= right)
-    {
-        middle = left + (right - left) / 2;
-        printf("middle index == %i, middle value == %i\n", middle, arr[middle]);
-        if (target == arr[middle])
-            return middle;
-        else if (target > arr[middle])
-            left = middle + 1;
-        else  
-            right = middle - 1;
-        
-            
-        
-    }
-    printf("Not in this section\n");
-}
+
 
 int test_bin_search() {
 int searchArrays[3][10] = {
