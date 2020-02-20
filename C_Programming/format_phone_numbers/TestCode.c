@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+/* 
+
+Write the function formatNums that receives a 10-element array of char *.
+Each element contains a string of characters representing a phone number that is
+not necessarily in the proper format required.
+
+Each received phone number may be in formats such as:  "999-999-9999", "9999999999",
+"(999) 9999999", "999,999,9999" or any other format. The important thing is that
+each provided string should have 10 digits and only 10 digits. Digits will only include 0-9, not dashes "-".
+
+The proper output format required is:  (999) 999-9999
+
+The function should create a new 10-element array of char * and convert each
+provided phone number to the proper format and place in the new array.
+Once processed, the function should return a pointer to the new array.
+
+If any provided phone number contains more or less than 10 digits, the function
+should return NULL.
+
+Example:
+Input: { "(210)3157904","2103157904","1031376904","(210) 3157904",
+					 "7210313704","210-315-7904","210 315 7904","(210) 315-7904",
+					 "8888675309","2103157904" }
+
+Proper return: { "(210) 315-7904","(210) 315-7904","(103) 137-6904","(210) 315-7904",
+									 "(721) 031-3704","(210) 315-7904","(210) 315-7904","(210) 315-7904",
+									"(888) 867-5309","(210) 315-7904" }
+
+*/
+
+
+
+char ** formatNums(char ** nums)
+{
+	char **newNums;
+	return newNums;
+}

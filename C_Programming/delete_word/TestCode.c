@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include "TestCode.h"
+
+/*
+  For this task, you will receive two pointers to NULL terminated strings: 
+		   a 'sentence', and a 'word'. The objective will be to delete (in place) the first 
+		   occurrence of 'word' in the sentence. 
+
+ Expected Return Values:
+		- the task is successful: should return ERROR_SUCCESS (0).
+		- provided parameters are bad: should return ERROR_INVALID_PARAMETER (87)
+		- the provided 'word' is not part of 'sentence': should return ERROR_NOT_FOUND (1168)
+*/
+
+int deleteWord(char* sentence, char* word)
+
+
+	return 0;
+}
+
