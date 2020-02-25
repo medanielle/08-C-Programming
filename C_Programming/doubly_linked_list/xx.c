@@ -43,26 +43,20 @@ struct nameNode* GetNewNode(char * x) {
 	strcpy(newNode->name, x);
 	newNode->prev = NULL;
 	newNode->next = NULL;
-    printf("new Node created %s\n", newNode-> name);
 	return newNode;
 }
 
 //Inserts a Node at head of doubly linked list
 struct nameNode* InsertAtHead(struct nameNode* head, char * x) {
-	//struct nameNode* newNode = GetNewNode(x);
-    struct nameNode* newNode = (struct nameNode*)malloc(sizeof(struct nameNode));
-	strcpy(newNode->name, x);
+	struct nameNode* newNode = GetNewNode(x);
     printf("Insert: %s\n", newNode->name);
 	if(head == NULL) {
 		head = newNode;
-        head->prev = NULL;
-	    head->next = NULL;
 		return head;
 	}
 	head->prev = newNode;
 	newNode->next = head; 
 	head = newNode;
-    head->prev = NULL;
     printf("Insert2: %s\n", head->name);
     return head;
 }
@@ -108,30 +102,29 @@ void ReversePrint() {
 	printf("\n");
 }
 
-struct nameNode* search(struct nameNode* head, char * data) {
-   
+void search(char * data) {
    int pos = 0;
-   struct nameNode* current = head;
+   
    if(head==NULL) {
       printf("Linked List not initialized");
+      return;
    } 
 
-   
+   struct nameNode* current = head;
    while(current!=NULL) {
       pos++;
       if(strcmp(current->name, data) == 0) {
-         printf("%s found at  node %s\n", data, current->name);
-         return current;
+         printf("%d found at position %d\n", data, pos);
+         return;
       }
 
       if(current->next != NULL)
          current = current->next;
       else
-         return NULL;
+         break;
    }
 
-   printf("%s does not exist in the list\n", data);
-   return NULL;
+   printf("%d does not exist in the list\n", data);
 }
 int find(char* key, struct nameNode *head)
 {
@@ -150,43 +143,18 @@ int find(char* key, struct nameNode *head)
     return -1;
 }
 
-struct nameNode * deleteNode(struct nameNode** head_ref, struct nameNode* del) 
-{ 
-    /* base case */
-    if (*head_ref == NULL || del == NULL) 
-    {
-        printf("Not nulls\n");
-        return *head_ref; 
-    }
-  
-    /* If node to be deleted is head node */
-    if (*head_ref == del) 
-        *head_ref = del->next; 
-        printf("deleted is head node\n");
-        return *head_ref;
-  
-    /* Change next only if node to be deleted is NOT the last node */
-    if (del->next != NULL) 
-        del->next->prev = del->prev;
-        printf("NOT the last node\n"); 
-  
-    /* Change prev only if node to be deleted is NOT the first node */
-    if (del->prev != NULL) 
-        del->prev->next = del->next; 
-        printf("NOT the first node \n");
-  
-    /* Finally, free the memory occupied by del*/
-    free(del); 
-    return *head_ref; 
-} 
+void remove_item(char* key, struct nameNode *head)
+{
+    
+}
 
 struct nameNode* buildList(char** names, int size)
 {
 	struct nameNode *head = NULL;
 
     for (int i = 0; i< size; i++){
+        printf("BuildList: %s\n", names[i]);
         head = InsertAtHead(head, names[i]);
-        printf("BuildList: add %s, to %s\n", names[i], head->name);
     }
 
 	return head;
@@ -195,12 +163,36 @@ struct nameNode* buildList(char** names, int size)
 
 struct nameNode* removeNode(struct nameNode* head, char* key)
 {
-    struct nameNode * found = search(head, key);
-    if (found != NULL){
-        head = deleteNode(&head, found);
-    } else {
-        printf("couldn't be found/deleted?\n");
+    // Traverses the list and removes the first found instance of the given key
+    if (strcmp(head->name, key) == 0)
+    {
+        printf("Match!\n");
+        head = head->next;
+        printf("Match!!\n");
+        head->prev = NULL;
+        printf("Match!!!\n");
     }
+    else
+    {
+        struct nameNode *curr = head;
+        struct nameNode *prev = NULL;
+        while (curr != NULL && strcmp(curr->name, key) != 0)
+        {
+            prev = curr;
+            curr = curr->next;
+        }
+        if (curr != NULL)
+        {
+            prev->next = curr->next;
+            prev->next->prev = prev;
+
+        }
+        else
+        {
+            printf("Did not find an element with data %s\n", key);
+        }
+    }
+    //printf("Head after Removal: %s\n", head-> name);
     return head;
 }
 
@@ -222,25 +214,27 @@ void freeMemory(struct nameNode *head)
 
 int main() {
 
-    char* names9[] = { "Bobby", "Paul", "Judd" };
+    char* names9[] = { "Bobby","Paul","Gene","Ace" };
 
 
 	struct nameNode* head = buildList(names9, sizeof(names9) / sizeof(*names9));
     Print(head);
     // Pass a name that's not in the list
-    head = removeNode(head, "Carol");
+    //head = 
+    removeNode(head, "Carol");
     Print(head);
     printf("Compare: 'Bobby', '%s' = %d\n", head->name, strcmp("Bobby", head->name));
     printf("Compare: 'NULL', '%s'\n", head->next );
     printf("Compare: 'NULL', '%s'\n", head->prev );
 
     // Pass a name that's in the list
-    head = removeNode(head, "Bobby");
+    //head = 
+    removeNode(head, "Bobby");
     Print(head);
     // ASSERT_EQ(NULL, head);
     // Determine if head isn't null
-    //if (head != NULL)
-    //    freeMemory(head);
+    if (head != NULL)
+        freeMemory(head);
 }
 	
 

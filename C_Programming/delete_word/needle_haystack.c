@@ -13,7 +13,28 @@ AKA: Move the substring from the string using memory operators and functions
 #include <stdlib.h>
 
 int haystack_needle(char *haystack, char *needle, char *buffer);
+int main()
+{
+  char string[] = "This is my brand new sentence";
+  char substring[] = " brand new";
+  // TODO: Create a char buffer named *buffer using malloc \
+  ensure it is large enough to hold string[] + a nul-terminator
+  char * buffer = malloc((strlen(string) + 1) * sizeof(char));
+  // TODO: Ensure buffer was created
+  if (buffer == NULL){
+    puts("Memory Allocation failed. Exitting");
+    exit(1);
+  }
+  haystack_needle(string, substring, buffer);
 
+  // TODO: Give back the memory from buffer
+  free(buffer);
+  // TODO: Print out the modified string
+  puts(string);
+
+  return 0;
+
+}
 
 /*
 Arguments:
@@ -45,36 +66,8 @@ int haystack_needle(char *haystack, char *needle, char *buffer)
 
     // TODO: Using memmove, overwrite the haystack (string)... effectivly removing the needle \
     // HINT: start at the mark_position... that is after all where we need to start replacing.
+    printf("2 sentence: %s word: %s buffer: %s markposition:  %s\n", haystack, needle, buffer, mark_position);
     memmove(mark_position, mark_position + needleLength, needleLength);
 
-    return 0;
-}
-
-int test(char * string, char * substring)
-{
-
-  // TODO: Create a char buffer named *buffer using malloc \
-  ensure it is large enough to hold string[] + a nul-terminator
-  char * buffer = malloc((strlen(string) + 1) * sizeof(char));
-  // TODO: Ensure buffer was created
-  if (buffer == NULL){
-    puts("Memory Allocation failed. Exitting");
-    exit(1);
-  }
-  haystack_needle(string, substring, buffer);
-
-  // TODO: Give back the memory from buffer
-  free(buffer);
-  // TODO: Print out the modified string
-  puts(string);
-
-  return 0;
-
-}
-
-int main(){
-    char string[] = "This is my brand new sentence";
-    char substring[] = " brand new";
-    test(string, substring);
     return 0;
 }

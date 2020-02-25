@@ -1,0 +1,13 @@
+
+extension install CMAKE Tools in vs code
+
+open WSL from start Ubuntu 18.04 LTS
+navigate to folder
+code .
+
+click BUild  on boottom middle bar
+wait
+click terminal in bottom pane
+cd Build
+./TestCode.c 
+
