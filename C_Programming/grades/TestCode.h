@@ -9,7 +9,7 @@ typedef enum {
 } StructType;
 
 typedef struct {
-	SLIST_ENTRY			list; // This is a Microsoft provided data structure containing a single item: a pointer to "Next"
+	//SLIST_ENTRY			list; // This is a Microsoft provided data structure containing a single item: a pointer to "Next"
 	unsigned long		id;
 	StructType			type;
 	union {
